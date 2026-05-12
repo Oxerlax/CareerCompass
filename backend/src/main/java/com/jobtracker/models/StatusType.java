@@ -1,0 +1,18 @@
+package com.jobtracker.models;
+
+public enum StatusType {
+    WISHLIST,
+    PLANNING,
+    APPLIED,
+    OA_RECEIVED,
+    OA_COMPLETED,
+    PHONE_SCREEN,
+    TECHNICAL_INTERVIEW,
+    BEHAVIORAL_INTERVIEW,
+    CULTURE_FIT_INTERVIEW,
+    OFFER_RECEIVED,
+    OFFER_ACCEPTED,
+    OFFER_DECLINED,
+    REJECTED,
+    WITHDRAWN
+}
