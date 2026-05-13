@@ -2,7 +2,7 @@ package com.jobtracker.models;
 
 public enum StatusType {
     WISHLIST,
-    PLANNING,
+    INCOMPLETE,
     APPLIED,
     OA_RECEIVED,
     OA_COMPLETED,
