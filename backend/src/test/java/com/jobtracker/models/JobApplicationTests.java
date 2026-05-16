@@ -22,6 +22,16 @@ public class JobApplicationTests {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         this.validator = factory.getValidator();
 
+        Company testCompany = new Company(
+            UUID.randomUUID(),
+            "Test Company",
+            "https://testcompany.com",
+            "Technology",
+            "A great company to work for",
+            500,
+            true
+        );
+
         this.jobApplication = new JobApplication(
             UUID.randomUUID(),
             "Software Engineer",
@@ -33,7 +43,8 @@ public class JobApplicationTests {
             LocalDate.now(),
             LocalDate.now().plusMonths(1),
             StatusType.APPLIED,
-            "LinkedIn"
+            "LinkedIn",
+            testCompany
         );
     }
 
@@ -44,27 +55,23 @@ public class JobApplicationTests {
     }
 
     @Test
-    public void testJobApplicationInvalidField() {
+    public void testJobApplicationInvalidFields() {
         this.jobApplication.setJobTitle("");
-    
         var violations = validator.validate(jobApplication);
         assertFalse(violations.isEmpty());
-
+        
         this.jobApplication.setJobTitle("Software Engineer");
         this.jobApplication.setMinimumSalary(-50000L);
-
         violations = validator.validate(jobApplication);
         assertFalse(violations.isEmpty());
 
         this.jobApplication.setMinimumSalary(60000L);
         this.jobApplication.setMaximumSalary(-100000L);
-
         violations = validator.validate(jobApplication);
         assertFalse(violations.isEmpty());
 
         this.jobApplication.setMaximumSalary(120000L);
         this.jobApplication.setStatus(null);
-
         violations = validator.validate(jobApplication);
         assertFalse(violations.isEmpty());
     }

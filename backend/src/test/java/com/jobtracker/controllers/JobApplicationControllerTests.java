@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jobtracker.models.Company;
 import com.jobtracker.models.JobApplication;
 import com.jobtracker.services.JobApplicationService;
 import com.jobtracker.models.StatusType;
@@ -47,6 +48,16 @@ public class JobApplicationControllerTests {
 
     @BeforeEach
     public void setup() {
+        Company testCompany = new Company(
+            UUID.randomUUID(),
+            "Test Company",
+            "https://testcompany.com",
+            "Technology",
+            "A great company to work for",
+            500,
+            true
+        );
+
         this.firstJobApplication = new JobApplication(
             UUID.randomUUID(),
             "Software Engineer",
@@ -58,7 +69,8 @@ public class JobApplicationControllerTests {
             LocalDate.now(),
             LocalDate.now().plusDays(30),
             StatusType.APPLIED,
-            "LinkedIn"
+            "LinkedIn",
+            testCompany
         );
 
         this.secondJobApplication = new JobApplication(
@@ -72,7 +84,8 @@ public class JobApplicationControllerTests {
             LocalDate.now(),
             LocalDate.now().plusDays(30),
             StatusType.APPLIED,
-            "Indeed"
+            "Indeed",
+            testCompany
         );
     }
 
