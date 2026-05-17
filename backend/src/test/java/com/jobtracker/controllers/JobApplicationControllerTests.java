@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jobtracker.exceptions.ResourceNotFoundException;
 import com.jobtracker.models.Company;
 import com.jobtracker.models.JobApplication;
 import com.jobtracker.services.JobApplicationService;
@@ -188,7 +189,7 @@ public class JobApplicationControllerTests {
     @Test
     public void getJobApplicationThatDoesNotExist() throws Exception {
         Mockito.when(jobApplicationService.getJobApplication(any(UUID.class)))
-            .thenReturn(null);
+            .thenThrow(new ResourceNotFoundException("Job application not found"));
 
         mockMvc.perform(get("/api/job-applications/" + UUID.randomUUID())
             .contentType("application/json")
@@ -244,6 +245,9 @@ public class JobApplicationControllerTests {
 
     @Test
     public void editJobApplicationThatDoesNotExist() throws Exception {
+        Mockito.when(jobApplicationService.updateJobApplication(any(JobApplication.class)))
+            .thenThrow(new ResourceNotFoundException("Job application not found"));
+            
         mockMvc.perform(put("/api/job-applications/" + this.firstJobApplication.getId())
             .contentType("application/json")
             .content(objectMapper.writeValueAsString(this.firstJobApplication))

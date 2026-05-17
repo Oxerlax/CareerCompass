@@ -46,20 +46,15 @@ public class JobApplicationController {
 
     @GetMapping("/{id}")
     public ResponseEntity<JobApplication> getJobApplication(@PathVariable UUID id) {
-        JobApplication jobApplication = jobApplicationService.getJobApplication(id);
-        if (jobApplication == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(jobApplication);
+        return ResponseEntity.ok(jobApplicationService.getJobApplication(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<JobApplication> updateJobApplication(@PathVariable UUID id, @Valid @RequestBody JobApplication jobApplication) {
+    public ResponseEntity<JobApplication> updateJobApplication
+        (@PathVariable UUID id, 
+        @Valid @RequestBody JobApplication jobApplication) {
+            
         jobApplication.setId(id);
-        JobApplication updatedJobApplication = jobApplicationService.updateJobApplication(jobApplication);
-        if (updatedJobApplication == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(updatedJobApplication);
+        return ResponseEntity.ok(jobApplicationService.updateJobApplication(jobApplication));
     }
 }

@@ -3,6 +3,8 @@ package com.jobtracker.services;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+
+import com.jobtracker.exceptions.ResourceNotFoundException;
 import com.jobtracker.models.JobApplication;
 import com.jobtracker.repositories.JobApplicationRepository;
 
@@ -28,10 +30,15 @@ public class JobApplicationService {
 
     public JobApplication getJobApplication(UUID id) {
         return jobApplicationRepository.findById(id)
-                .orElse(null);
+            .orElseThrow(() -> 
+                new ResourceNotFoundException("Job application not found"));
     }
 
     public JobApplication updateJobApplication(JobApplication jobApplication) {
+        if (!jobApplicationRepository.existsById(jobApplication.getId())) {
+            throw new ResourceNotFoundException("Job application not found");
+        }
+        
         return jobApplicationRepository.save(jobApplication);
     }
 }
