@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jobtracker.models.JobApplication;
+import com.jobtracker.models.entities.JobApplication;
 import com.jobtracker.services.JobApplicationService;
 
 import jakarta.validation.Valid;

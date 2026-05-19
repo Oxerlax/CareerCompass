@@ -26,10 +26,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jobtracker.exceptions.ResourceNotFoundException;
-import com.jobtracker.models.Company;
-import com.jobtracker.models.JobApplication;
 import com.jobtracker.services.JobApplicationService;
-import com.jobtracker.models.StatusType;
+import com.jobtracker.models.entities.Company;
+import com.jobtracker.models.entities.JobApplication;
+import com.jobtracker.models.enums.StatusType;
 
 @WebMvcTest(JobApplicationController.class)
 @AutoConfigureMockMvc(addFilters = false)

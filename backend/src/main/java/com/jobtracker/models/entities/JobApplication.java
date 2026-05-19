@@ -1,7 +1,9 @@
-package com.jobtracker.models;
+package com.jobtracker.models.entities;
 
 import java.time.LocalDate;
 import java.util.UUID;
+
+import com.jobtracker.models.enums.StatusType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

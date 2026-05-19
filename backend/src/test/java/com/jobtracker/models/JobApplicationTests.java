@@ -9,6 +9,10 @@ import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.jobtracker.models.entities.Company;
+import com.jobtracker.models.entities.JobApplication;
+import com.jobtracker.models.enums.StatusType;
+
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;

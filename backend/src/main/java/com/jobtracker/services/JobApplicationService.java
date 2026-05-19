@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.jobtracker.exceptions.ResourceNotFoundException;
-import com.jobtracker.models.JobApplication;
+import com.jobtracker.models.entities.JobApplication;
 import com.jobtracker.repositories.JobApplicationRepository;
 
 @Service

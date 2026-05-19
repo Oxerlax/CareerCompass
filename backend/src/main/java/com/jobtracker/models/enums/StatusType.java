@@ -1,4 +1,4 @@
-package com.jobtracker.models;
+package com.jobtracker.models.enums;
 
 public enum StatusType {
     WISHLIST,

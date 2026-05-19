@@ -1,4 +1,4 @@
-package com.jobtracker.models;
+package com.jobtracker.models.entities;
 
 import java.util.UUID;
 
