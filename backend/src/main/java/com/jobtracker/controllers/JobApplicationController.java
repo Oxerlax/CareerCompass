@@ -51,10 +51,7 @@ public class JobApplicationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<JobApplication> updateJobApplication
-        (@PathVariable UUID id, 
-        @Valid @RequestBody JobApplication jobApplication) {
-            
-        jobApplication.setId(id);
-        return ResponseEntity.ok(jobApplicationService.updateJobApplication(jobApplication));
+    (@PathVariable UUID id, @Valid @RequestBody JobApplication jobApplication) {
+        return ResponseEntity.ok(jobApplicationService.updateJobApplication(id, jobApplication));
     }
 }

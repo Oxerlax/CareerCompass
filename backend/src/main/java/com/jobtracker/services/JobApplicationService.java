@@ -34,11 +34,12 @@ public class JobApplicationService {
                 new ResourceNotFoundException("Job application not found"));
     }
 
-    public JobApplication updateJobApplication(JobApplication jobApplication) {
-        if (!jobApplicationRepository.existsById(jobApplication.getId())) {
+    public JobApplication updateJobApplication(UUID id, JobApplication jobApplication) {
+        if (!jobApplicationRepository.existsById(id)) {
             throw new ResourceNotFoundException("Job application not found");
         }
-        
+
+        jobApplication.setId(id);
         return jobApplicationRepository.save(jobApplication);
     }
 }
