@@ -3,6 +3,8 @@ package com.jobtracker.services;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.jobtracker.exceptions.ResourceNotFoundException;
 import com.jobtracker.models.entities.Company;
 import com.jobtracker.models.entities.Contact;
@@ -11,6 +13,7 @@ import com.jobtracker.models.entities.JobApplication;
 import com.jobtracker.models.entities.User;
 import com.jobtracker.repositories.UserRepository;
 
+@Service
 public class UserService {
     private final UserRepository userRepository;
     

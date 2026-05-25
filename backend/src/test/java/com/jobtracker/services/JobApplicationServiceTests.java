@@ -48,26 +48,26 @@ public class JobApplicationServiceTests {
 
     @Test
     void updateJobApplication_WhenFound_SavesAndReturnsApplication() {
-        JobApplication app = new JobApplication();
-        app.setId(UUID.randomUUID());
+        JobApplication application = new JobApplication();
 
-        when(repository.existsById(app.getId())).thenReturn(true);
-        when(repository.save(app)).thenReturn(app);
+        when(repository.existsById(application.getId())).thenReturn(true);
+        when(repository.save(application)).thenReturn(application);
 
-        JobApplication result = service.updateJobApplication(app);
+        JobApplication newJobApplication = new JobApplication();
 
-        assertEquals(app, result);
-        verify(repository).save(app);
+        JobApplication result = service.updateJobApplication(application.getId(), newJobApplication);
+
+        assertEquals(newJobApplication, result);
+        verify(repository).save(newJobApplication);
     }
 
     @Test
     void updateJobApplication_WhenNotFound_ThrowsResourceNotFoundException() {
-        JobApplication app = new JobApplication();
-        app.setId(UUID.randomUUID());
+        JobApplication application = new JobApplication();
         
-        when(repository.existsById(app.getId())).thenReturn(false);
+        when(repository.existsById(application.getId())).thenReturn(false);
 
         assertThrows(ResourceNotFoundException.class,
-            () -> service.updateJobApplication(app));
+            () -> service.updateJobApplication(application.getId(), application));
     }
 }

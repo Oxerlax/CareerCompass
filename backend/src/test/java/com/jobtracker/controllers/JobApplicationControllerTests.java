@@ -199,7 +199,7 @@ public class JobApplicationControllerTests {
 
     @Test
     public void editJobApplication() throws Exception {
-        Mockito.when(jobApplicationService.updateJobApplication(any(JobApplication.class)))
+        Mockito.when(jobApplicationService.updateJobApplication(any(UUID.class),any(JobApplication.class)))
             .thenReturn(this.firstJobApplication);
 
         mockMvc.perform(post("/api/job-applications")
@@ -225,7 +225,7 @@ public class JobApplicationControllerTests {
 
     @Test
     public void editJobApplicationWithInvalidData() throws Exception {
-        Mockito.when(jobApplicationService.updateJobApplication(any(JobApplication.class)))
+        Mockito.when(jobApplicationService.updateJobApplication(any(UUID.class), any(JobApplication.class)))
             .thenReturn(this.firstJobApplication);
 
         mockMvc.perform(post("/api/job-applications")
@@ -245,7 +245,7 @@ public class JobApplicationControllerTests {
 
     @Test
     public void editJobApplicationThatDoesNotExist() throws Exception {
-        Mockito.when(jobApplicationService.updateJobApplication(any(JobApplication.class)))
+        Mockito.when(jobApplicationService.updateJobApplication(any(UUID.class),any(JobApplication.class)))
             .thenThrow(new ResourceNotFoundException("Job application not found"));
             
         mockMvc.perform(put("/api/job-applications/" + this.firstJobApplication.getId())
